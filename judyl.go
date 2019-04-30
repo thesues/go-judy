@@ -1,7 +1,8 @@
 package judy
 
 /*
-#cgo LDFLAGS: -lJudy
+#cgo CFLAGS:  -I thirdparty/opt/judy/include -O3 -g
+#cgo LDFLAGS: thirdparty/opt/jemalloc/lib/libjemalloc.a thirdparty/opt/judy/lib/libJudy.a
 #include <Judy.h>
 */
 import "C"
