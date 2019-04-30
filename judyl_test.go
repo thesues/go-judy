@@ -191,7 +191,6 @@ func TestJudyLNext(t *testing.T) {
 	}
 
 }
-
 func TestJudyLPrev(t *testing.T) {
 
 	j := JudyL{}
@@ -206,7 +205,7 @@ func TestJudyLPrev(t *testing.T) {
 		t.Errorf("Prev(20) should be 18,9 was %v,%v", next, val)
 	}
 	if next, val, ok := j.Prev(21); ok && (next != 20 || val != 10) {
-		t.Errorf("Prev(21) should be 20,10 was %v", next, val)
+		t.Errorf("Prev(21) should be 20,10 was %v, %v", next, val)
 	}
 	if _, _, ok := j.Prev(2); ok {
 		t.Errorf("Prev(2) should not be found")
