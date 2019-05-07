@@ -2,7 +2,7 @@
 package judy
 
 /*
-#cgo CFLAGS: -I${INCLUDE_PATH}
+#cgo CFLAGS: -I ${INCLUDE_PATH}
 #cgo LDFLAGS: ${LIBRARY_PATH}
 #include <Judy.h>
 */
