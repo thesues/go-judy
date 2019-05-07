@@ -14,4 +14,4 @@ judyl.go:judyl.go.in
 judyhs.go:judyhs.go.in
 	python config_path.py $< > $@
 clean:
-	rm -rf judy1.go judyl.go judyhs.go
+	rm -rf judy1.go judyl.go judyhs.go thirdparty/opt/ thirdparty/src/jemalloc-5.2.0/jemalloc-5.2.0 thirdparty/src/judy-1.0.5
