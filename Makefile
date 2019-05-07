@@ -1,3 +1,4 @@
+CFLAGS=-std=c++11 -O3 -ffast-math -static-libstdc++
 all: judy1.go judyl.go judyhs.go thirdparty/opt/jemalloc/lib/libjemalloc.a thirdparty/opt/judy/lib/libJudy.a
 thirdparty/opt/jemalloc/lib/libjemalloc.a: thirdparty/src/jemalloc-5.2.0
 	cd thirdparty/src/jemalloc-5.2.0 && ./configure --disable-debug --with-jemalloc-prefix= --prefix=${CURDIR}/thirdparty/opt/jemalloc && make -j8 && make install
