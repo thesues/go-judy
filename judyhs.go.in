@@ -1,9 +1,11 @@
+// Auto generated from judyhs.go.in
+
 package judy
 
 
 /*
-#cgo CFLAGS:  -I thirdparty/opt/judy/include -O3 -g
-#cgo LDFLAGS: thirdparty/opt/jemalloc/lib/libjemalloc.a thirdparty/opt/judy/lib/libJudy.a
+#cgo CFLAGS: -I${INCLUDE_PATH}
+#cgo LDFLAGS: ${LIBRARY_PATH}
 #include <Judy.h>
 */
 import "C"
