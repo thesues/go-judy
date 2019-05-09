@@ -5,7 +5,7 @@ import os
 
 
 INCLUDE_PATH=os.getcwd() + "/" +"thirdparty/opt/judy/include -O3 -g"
-LIBRARY_PATH=os.getcwd() + "/" +"thirdparty/opt/jemalloc/lib/libjemalloc.a" + " " + os.getcwd() + "/" + "thirdparty/opt/judy/lib/libJudy.a"
+LIBRARY_PATH=os.getcwd() + "/" +"thirdparty/opt/jemalloc/lib/libjemalloc.a" + " " + os.getcwd() + "/" + "thirdparty/opt/judy/lib/libJudy.a -ldl"
 
 input = sys.argv[1]
 s = open(input,"r")
