@@ -213,6 +213,114 @@ func TestJudyLPrev(t *testing.T) {
 
 }
 
+func TestJudyLFirstEmpty(t *testing.T) {
+
+	j := JudyL{}
+	defer j.Free()
+
+	var i uint64
+	for i = 0; i < 100; i++ {
+		j.Insert(i*2, i)
+	}
+	/*
+	0, 0
+	2, 1
+	4, 2
+	*/
+
+	if next, ok := j.FirstEmpty(0); ok && (next != 1) {
+		t.Errorf("FirstEmpty(0) should be 1, But was %v", next)
+	}
+	if next, ok := j.FirstEmpty(2); ok && (next != 3) {
+		t.Errorf("FirstEmpty(2) should be 3, But was %v", next)
+	}
+	if next, ok := j.FirstEmpty(201); ok && (next != 201) {
+		t.Errorf("FirstEmpty(201) should be 201, But was %v", next)
+	}
+
+}
+
+func TestJudyLNextEmpty(t *testing.T) {
+
+	j := JudyL{}
+	defer j.Free()
+
+	var i uint64
+	for i = 0; i < 100; i++ {
+		j.Insert(i*2, i)
+	}
+	/*
+	0, 0
+	2, 1
+	4, 2
+	6, 3
+	*/
+
+	if next, ok := j.NextEmpty(0); ok && (next != 1) {
+		t.Errorf("NextEmpty(0) should be 1, But was %v", next)
+	}
+	if next, ok := j.NextEmpty(5); ok && (next != 7) {
+		t.Errorf("NextEmpty(5) should be 3, But was %v", next)
+	}
+	if next, ok := j.NextEmpty(201); ok && (next != 202) {
+		t.Errorf("NextEmpty(201) should be 201, But was %v", next)
+	}
+
+}
+
+func TestJudyLLastEmpty(t *testing.T) {
+
+	j := JudyL{}
+	defer j.Free()
+
+	var i uint64
+	for i = 0; i < 100; i++ {
+		j.Insert(i*2, i)
+	}
+	/*
+	0, 0
+	2, 1
+	4, 2
+	*/
+
+	if next, ok := j.LastEmpty(math.MaxUint64); ok && (next != math.MaxUint64) {
+		t.Errorf("LastEmpty(math.MAXUint64) should be MaxUint64, But was %v", next)
+	}
+	if next, ok := j.LastEmpty(3); ok && (next != 3) {
+		t.Errorf("LastEmpty(3) should be 3, But was %v", next)
+	}
+	if next, ok := j.LastEmpty(201); ok && (next != 201) {
+		t.Errorf("LastEmpty(201) should be 201, But was %v", next)
+	}
+
+}
+
+func TestJudyLPrevEmpty(t *testing.T) {
+
+	j := JudyL{}
+	defer j.Free()
+
+	var i uint64
+	for i = 0; i < 100; i++ {
+		j.Insert(i*2, i)
+	}
+	/*
+	0, 0
+	2, 1
+	4, 2
+	*/
+
+	if next, ok := j.PrevEmpty(math.MaxUint64); ok && (next != math.MaxUint64-1) {
+		t.Errorf("PrevEmpty(math.MAXUint64) should be MaxUint64 - 1, But was %v", next)
+	}
+	if next, ok := j.PrevEmpty(3); ok && (next != 1) {
+		t.Errorf("PrevEmpty(3) should be 1, But was %v", next)
+	}
+	if next, ok := j.PrevEmpty(201); ok && (next != 200) {
+		t.Errorf("PrevEmpty(201) should be 200, But was %v", next)
+	}
+
+}
 func runOrderedJudyLMemUsageTest(t *testing.T, n int) {
 	j := JudyL{}
 	defer j.Free()

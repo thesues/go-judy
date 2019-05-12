@@ -181,3 +181,46 @@ func (j *JudyL) ByCount(nth uint64) (uint64, uint64, bool) {
 		return uint64(idx), uint64(*((*C.Word_t)(pval))), true
 	}
 }
+
+func (j *JudyL) FirstEmpty(index uint64) (uint64, bool) {
+	idx := C.Word_t(index)
+	pval := int(C.JudyLFirstEmpty(C.Pcvoid_t(j.array), &idx, nil))
+
+	if pval == 0{
+		return 0, false
+	} else {
+		return uint64(idx), true
+	}
+}
+
+func (j *JudyL) NextEmpty(index uint64) (uint64, bool) {
+	idx := C.Word_t(index)
+	pval := int(C.JudyLNextEmpty(C.Pcvoid_t(j.array), &idx, nil))
+
+	if pval == 0{
+		return 0, false
+	} else {
+		return uint64(idx), true
+	}
+}
+func (j *JudyL) LastEmpty(index uint64) (uint64, bool) {
+	idx := C.Word_t(index)
+	pval := int(C.JudyLLastEmpty(C.Pcvoid_t(j.array), &idx, nil))
+
+	if pval == 0 {
+		return 0, false
+	} else {
+		return uint64(idx), true
+	}
+}
+
+func (j *JudyL) PrevEmpty(index uint64) (uint64, bool) {
+	idx := C.Word_t(index)
+	pval := int(C.JudyLPrevEmpty(C.Pcvoid_t(j.array), &idx, nil))
+
+	if pval == 0 {
+		return 0, false
+	} else {
+		return uint64(idx), true
+	}
+}
