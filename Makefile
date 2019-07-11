@@ -8,11 +8,11 @@ thirdparty/opt/judy/lib/libJudy.a:thirdparty/src/judy-1.0.5
 	cd thirdparty/src/judy-1.0.5 && ./configure --prefix=${CURDIR}/thirdparty/opt/judy && make && make install
 thirdparty/src/judy-1.0.5: thirdparty/src/Judy-1.0.5.tar.gz
 	cd thirdparty/src && tar xf Judy-1.0.5.tar.gz
-judy1.go:judy1.go.in
+judy1.go:judy1.go.in config_path.py
 	python config_path.py $< > $@
-judyl.go:judyl.go.in
+judyl.go:judyl.go.in config_path.py
 	python config_path.py $< > $@
-judyhs.go:judyhs.go.in
+judyhs.go:judyhs.go.in config_path.py
 	python config_path.py $< > $@
 clean:
 	rm -rf judy1.go judyl.go judyhs.go thirdparty/opt/ thirdparty/src/jemalloc-5.2.0 thirdparty/src/judy-1.0.5
