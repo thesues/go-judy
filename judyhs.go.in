@@ -39,7 +39,7 @@ func (j *JudyHS) Delete(data []byte) bool {
 //   returns (_, false) if the index was not found
 func (j *JudyHS) Get(data []byte) (uint64, bool) {
 	len := len(data)
-	pval := unsafe.Pointer(C.JudyHSGet(C.Pcvoid_t(j.array), unsafe.Pointer(&data[0]), C.Word_t(len), nil))
+	pval := unsafe.Pointer(C.JudyHSGet(C.Pcvoid_t(j.array), unsafe.Pointer(&data[0]), C.Word_t(len)))
 	if pval == nil {
 		return 0, false
 	} else {
