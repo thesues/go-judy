@@ -1,8 +1,13 @@
 package judy
 
 import (
+	"bufio"
+	"fmt"
 	"math"
 	"math/rand"
+	"os"
+	"strconv"
+	"strings"
 	"testing"
 )
 
@@ -217,6 +222,54 @@ func TestJudy1Next(t *testing.T) {
 	}
 	if _, ok := j.Next(200); ok {
 		t.Errorf("Next(200) should not be found")
+	}
+
+}
+
+func showJudy(j *Judy1) {
+	fmt.Printf("start\n")
+	var loop uint64
+	var ok bool
+	loop, ok = j.Next(0)
+	for ok {
+		fmt.Printf("%x\n", loop)
+		loop, ok = j.Next(loop)
+	}
+	fmt.Printf("end\n")
+
+}
+
+func TestJudy1Why(t *testing.T) {
+
+	j := &Judy1{}
+	defer j.Free()
+
+	inFile, err := os.Open("file.txt")
+	if err != nil {
+		t.Fatal("can not open file")
+	}
+	defer inFile.Close()
+
+	scanner := bufio.NewScanner(inFile)
+	lineNum := 1
+	for scanner.Scan() {
+		parts := strings.Split(scanner.Text(), " ")
+		num, err := strconv.ParseUint(parts[1], 16, 64)
+		if err != nil {
+			t.Fatalf("%s\n", err)
+		}
+
+		if parts[0] == "setting" {
+			if j.Set(num) == false {
+				t.Fatalf("set failed, %x, line: %d", num, lineNum)
+			}
+		} else if parts[0] == "unsetting" {
+			if j.Unset(num) == false {
+				t.Fatalf("unset failed, %x, line: %d", num, lineNum)
+			}
+		}
+		lineNum += 1
+
 	}
 
 }
