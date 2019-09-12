@@ -3,9 +3,8 @@ import string
 import sys
 import os
 
-libs=os.popen('./thirdparty/opt/jemalloc/bin/jemalloc-config --libs').read()
 INCLUDE_PATH=os.getcwd() + "/" +"thirdparty/opt/judy/include -O3 -g"
-LIBRARY_PATH=os.getcwd() + "/" +"thirdparty/opt/jemalloc/lib/libjemalloc.a" + " " + os.getcwd() + "/" + "thirdparty/opt/judy/lib/libJudy.a " + libs
+LIBRARY_PATH=os.getcwd() + "/" + "thirdparty/opt/judy/lib/libJudy.a "
 
 input = sys.argv[1]
 s = open(input,"r")
