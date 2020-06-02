@@ -1,7 +1,7 @@
 package judy
 
 /*
-#cgo LDFLAGS: -ljudy
+#cgo LDFLAGS: -lJudy
 #include <Judy.h>
 */
 import "C"
