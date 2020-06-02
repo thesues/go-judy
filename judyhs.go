@@ -1,11 +1,7 @@
-// Auto generated from judyhs.go.in
-
 package judy
 
-
 /*
-#cgo CFLAGS: -I${INCLUDE_PATH}
-#cgo LDFLAGS: ${LIBRARY_PATH}
+#cgo LDFLAGS: -ljudy
 #include <Judy.h>
 */
 import "C"
@@ -25,7 +21,6 @@ func (j *JudyHS) Insert(data []byte, value uint64) {
 	pval := unsafe.Pointer(C.JudyHSIns(C.PPvoid_t(&j.array), unsafe.Pointer(&data[0]), C.Word_t(len), nil))
 	*((C.PWord_t)(pval)) = C.Word_t(value)
 }
-
 
 // Delete the Index/Value pair from the JudyHS array.
 // Returns true if successful. Returns false if Index was not present.

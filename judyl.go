@@ -1,9 +1,7 @@
-// Auto generated from judyl.go.in
 package judy
 
 /*
-#cgo CFLAGS: -I ${INCLUDE_PATH}
-#cgo LDFLAGS: ${LIBRARY_PATH}
+#cgo LDFLAGS: -ljudy
 #include <Judy.h>
 */
 import "C"
@@ -186,7 +184,7 @@ func (j *JudyL) FirstEmpty(index uint64) (uint64, bool) {
 	idx := C.Word_t(index)
 	pval := int(C.JudyLFirstEmpty(C.Pcvoid_t(j.array), &idx, nil))
 
-	if pval == 0{
+	if pval == 0 {
 		return 0, false
 	} else {
 		return uint64(idx), true
@@ -197,7 +195,7 @@ func (j *JudyL) NextEmpty(index uint64) (uint64, bool) {
 	idx := C.Word_t(index)
 	pval := int(C.JudyLNextEmpty(C.Pcvoid_t(j.array), &idx, nil))
 
-	if pval == 0{
+	if pval == 0 {
 		return 0, false
 	} else {
 		return uint64(idx), true

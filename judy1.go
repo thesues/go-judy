@@ -1,4 +1,3 @@
-// Auto generated from judy1.go.in
 // Go language wrapper for Judy arrays (as found at http://judy.sourceforge.net)
 //
 // Judy arrays are a fast and memory efficient dynamic array structure. Judy arrays were invented by Doug Baskins
@@ -12,8 +11,7 @@
 package judy
 
 /*
-#cgo CFLAGS: -I${INCLUDE_PATH}
-#cgo LDFLAGS: ${LIBRARY_PATH}
+#cgo LDFLAGS: -ljudy
 #include <Judy.h>
 */
 import "C"
